@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card p-4 shadow">
+    <h3>Login</h3>
+
+    {% if erro %}
+        <div class="alert alert-danger">{{ erro }}</div>
+    {% endif %}
+
+    <form method="post" action="/login">
+        <div class="mb-3">
+            <label>Email</label>
+            <input name="email" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Senha</label>
+            <input name="senha" type="password" class="form-control" required>
+        </div>
+
+        <button class="btn btn-primary w-100">Entrar</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+<a href="/logout" class="btn btn-secondary mb-3">Logout</a>
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Meus Projetos</h2>
+
+<div class="card p-3 mb-4">
+    <form method="post" action="/projeto/criar">
+        <div class="mb-2">
+            <input name="titulo" placeholder="Título" class="form-control" required>
+        </div>
+        <div class="mb-2">
+            <textarea name="descricao" placeholder="Descrição" class="form-control"></textarea>
+        </div>
+        <button class="btn btn-success">Criar Projeto</button>
+    </form>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Versão</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for projeto in projetos %}
+        <tr>
+            <td>{{ projeto.titulo }}</td>
+            <td>{{ projeto.descricao }}</td>
+            <td>{{ projeto.versao }}</td>
+            <td>
+                <a href="/projeto/deletar/{{ projeto.id }}" class="btn btn-danger btn-sm">
+                    Excluir
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
